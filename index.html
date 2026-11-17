@@ -1,0 +1,231 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+		<title>resume</title>
+	</head>
+	<div class= "page">
+	<body>
+	<header>
+	<p class="title">CATHERINE THE GREAT VISIONARY</p>
+
+	<p class="contact">
+   		<span class="p1">Catherine Enterprises HQ 
+		<b><span class="v"> | </span></b>St. Petersburg, Russia</span><b><span class="v"> | </span></b> <span class= "p2">catherineII@futurelook.com</span><br/></p>
+</header>
+<main>
+	<div class= "info-box">
+	<h3>📎 SUMMARY </h3><p>Company-first, customer‑centered professional with the capability to turn vision into practical results. Specialist in improving processes, strengthening collaboration, and delivering high‑quality results. 34 years of experience as a business executive.</p> </div>
+<div class="info-box">
+  <h3>🏆 ACHIEVEMENTS</h3>
+  <ul>
+	<li>Improved workflow efficiency by around 20% through organized planning and cross‑team coordination.</li>
+	<li>Built communication infrastructures that increased project alignment and reduced delays.</li>
+	<li>Led initiatives that consistently created high‑quality outcomes across multiple departments.</li>
+  </ul>
+<img src="https://i.ibb.co/PX7bHKL/IMG-1626.jpg" alt="IMG 1617" border="0">
+</div>
+<div class="info-box">
+  <h3>🧩 SKILLS & CHALLENGES ⚙️</h3>
+
+  <div class="sc-grid">
+	<div class="sc-column">
+	  <h4>Skills</h4>
+	  <ul style='font-size:1.25rem'>
+		<li><strong>Process Improvement</strong>— <br /> Able to observe workflows and make them more efficient.</li>
+		<li><strong>Collaboration</strong>—<br /> Works well with teams and keeps communication clear.</li>
+		<li><strong>Quality Focus</strong> —<br />Pays attention to detail and maintains high standards.</li>
+		<li><strong>Organization</strong> — <br />Keeps tasks structured and deadlines manageable.</li>
+		<li><strong>Adaptability</strong> — <br />Adjusts quickly to new tools, expectations, or changes.</li>
+	  </ul>
+	</div>
+
+	<div class="sc-column">
+	  <h4>Challenges</h4>
+	  <ul style='font-size:1.25rem'>
+		<li><strong>Political Resistance</strong> — Faced opposition from powerful groups who disagreed with reforms or feared change.</li>
+		<li><strong>Modernization Barriers</strong> — Worked against outdated systems that made progress slow and difficult.</li>
+		<li><strong>Social Inequality</strong> — Had to navigate a society divided by class, tradition, and limited access to educational opportunities.</li>
+		<li><strong>International Tension</strong> — Managed conflicts and negotiations with neighboring powers during unstable periods.</li>
+		<li><strong>Public Expectations</strong> — Balanced the responsibilities of leadership with the pressure to maintain stability and growth.</li>
+	  </ul>
+	</div>
+  </div>
+</div>
+<div class="info-box">
+  <h3>💼 POTENTIAL AS A MODERN CEO</h3>
+
+  <p>
+	Demonstrates the qualities of a modern executive capable of leading large organizations
+	through growth, restructuring, and long‑term strategic development. Shows a strong ability
+	to define clear priorities, manage complex operations, and implement wide‑scale
+	improvements with consistency and confidence. Approaches leadership with a balance of
+	decisiveness and adaptability, ensuring stability during periods of change while still
+	pushing forward innovation. Exhibits a forward‑thinking mindset, effective communication
+	style, and a talent for aligning diverse groups toward shared goals — traits essential for
+	delivering sustained performance in a competitive corporate environment.
+  </p>
+</div>
+<div class="info-box2">
+  <h1 style="color: #4659E7; font-family: Kranky; text-align: center;">WHAT WOULD HER MAJESTY DO?</h1>
+  <p>Read the following situation and choose what you would do. Then see if Catherine would agree.</p>
+
+  <button class="interact-btn" onclick="showScenario()">Make your decision</button>
+
+  <div id="scenarioBox" style="margin-top:15px; font-size:1.2rem; display:none;">
+	<p id="scenarioText"></p>
+
+	<div id="optionButtons"></div>
+  </div>
+</div>
+
+<script>
+const scenarios = [
+  {
+	text: "A department is consistently missing deadlines and morale is dropping.",
+	options: [
+	  "Option #1: Replace the department head immediately.",
+	  "Option #2: Hold a meeting to understand the issues and reorganize responsibilities.",
+	  "Option #3: Ignore it for now and hope performance improves."
+	],
+	catherineChoice: 1,
+	reasoning: "She preferred structured reform: diagnosing issues, reorganizing roles, and improving communication rather than acting impulsively or avoiding problems."
+  },
+  {
+	text: "Two teams are arguing over the direction of a major project.",
+	options: [
+	  "Option #1: Let them resolve it themselves.",
+	  "Option #2: Choose one team’s plan and move forward.",
+	  "Option #3: Mediate directly and create a unified strategy."
+	],
+	catherineChoice: 2,
+	reasoning: "She often mediated disputes personally, identifying shared goals and enforcing a unified direction to maintain stability."
+  },
+  {
+	text: "Your organization is using outdated tools that slow down productivity.",
+	options: [
+	  "Option #1: Invest in new tools and training.",
+	  "Option #2: Keep the old tools to save money.",
+	  "Option #3: Upgrade only a few tools to test the waters."
+	],
+	catherineChoice: 0,
+	reasoning: "She strongly supported modernization and long-term reform, even when it required upfront investment."
+  }
+];
+
+let currentScenario = null;
+
+function showScenario() {
+  currentScenario = scenarios[Math.floor(Math.random() * scenarios.length)];
+
+  document.getElementById("scenarioText").innerHTML = currentScenario.text;
+
+  const buttonContainer = document.getElementById("optionButtons");
+
+buttonContainer.classList.remove("answered");
+
+buttonContainer.innerHTML = "";
+
+  currentScenario.options.forEach((option, index) => {
+	const btn = document.createElement("button");
+	btn.className = "interact-btn";
+	btn.style.display = "block";
+	btn.style.marginTop = "10px";
+	btn.innerText = option;
+	btn.onclick = () => chooseAction(index);
+	buttonContainer.appendChild(btn);
+  });
+
+  document.getElementById("scenarioBox").style.display = "block";
+}
+
+function chooseAction(choice) {
+  const buttonContainer = document.getElementById("optionButtons");
+
+  buttonContainer.classList.add("answered");
+
+  const buttons = buttonContainer.querySelectorAll(".interact-btn");
+
+buttons.forEach(button => {
+  button.classList.remove("correct", "wrong", "selected");
+});
+
+buttons[choice].classList.add("selected");
+
+buttons[currentScenario.catherineChoice].classList.add("correct");
+
+if (choice !== currentScenario.catherineChoice) {
+  buttons[choice].classList.add("wrong");
+}
+
+  const userAction = currentScenario.options[choice];
+  const catherineAction = currentScenario.options[currentScenario.catherineChoice];
+  const wouldSheAgree = choice === currentScenario.catherineChoice;
+if (wouldSheAgree) {
+  confetti({
+	particleCount: 300,
+	spread: 180,
+	startVelocity: 50,
+	gravity: 0.7,
+	origin: { x: 0.5, y: 0.6 }
+  });
+
+  confetti({
+	particleCount: 300,
+	spread: 180,
+	startVelocity: 50,
+	gravity: 0.7,
+	origin: { x: 0.5, y: 0.6 }
+  });
+
+   confetti({
+	particleCount: 300,
+	spread: 180,
+	startVelocity: 50,
+	gravity: 0.7,
+	origin: { x: 0.5, y: 0.6 }
+  });
+}
+
+  Swal.fire({
+	title: '<span style="font-family: Kranky; font-size: 2rem; color:#4659E7;"><b>Your Decision</b></span>',
+	html: `
+	  <span style="font-family: Story Script; font-size: 1.2rem;">
+		<b>You chose:</b> ${userAction}<br><br>
+		<b>Would Catherine do this?</b> ${wouldSheAgree ? "Yes! 🎉" : "No. ❌"}<br><br>
+		<b>Her approach:</b> ${catherineAction}<br><br>
+		<b>Reason:</b> ${currentScenario.reasoning}
+	  </span>
+	`,
+	background: '#e5e5e5',
+	confirmButtonText: 'Interesting',
+	customClass: {
+	  popup: 'imperial-popup',
+	  confirmButton: 'button'
+	}
+  });
+}
+</script>
+
+	</main>
+	<footer><b>☆</b> Created with HTML/CSS/JS <b>☆</b><br><i style='font-size: 1.1rem'>and God's grace ❤️ </i></footer>
+	</body>
+	</div>
+	<script>
+
+Swal.fire({
+  title: '<span style="font-family: Kranky; font-size: 2.1rem; color:#000000;"><b>  IMPERIAL NOTICE </b></span>',
+  html: "<span style='font-family: Comfortaa; font-size: 1.2rem;'>I used Microsoft Copilot and ChatGPT to fix quite a few bugs and help with the structure/content. I am not strong in JavaScript like HTML and CSS, so AI had to help me out a lot. 🙂</span>",
+  color: '#000000',
+  background: '#e5e5e5',
+  confirmButtonText: 'OK',
+  customClass: {
+	popup: 'imperial-popup',
+	confirmButton: 'button'
+  }
+});
+
+</script>
+</html>
